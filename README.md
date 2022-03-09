@@ -1,6 +1,15 @@
 # MakersLink-MemberSystem
 A repo to develop a member system for makersLink and learn Python/Django
 
+# Working
+apt install python3-pip
+apt install python3-virtualenv 
+check out repo
+go into repo folder
+source ./start-env.sh
+do stuff
+source ./stop-env.sh
+
 ## General requirements:
 - Should include a move to PostgreSQL away from SQLite
 - Should include a move to something like nginx+gunicorn for webserver
