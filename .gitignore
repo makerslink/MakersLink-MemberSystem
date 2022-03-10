@@ -1,1 +1,4 @@
 virtenv/*
+MemberSystem/static/*
+__pycache__/
+db.sqlite3
