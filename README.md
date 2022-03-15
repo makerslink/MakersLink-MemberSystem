@@ -1,14 +1,33 @@
 # MakersLink-MemberSystem
 A repo to develop a member system for makersLink and learn Python/Django
 
-# Working
-apt install python3-pip
-apt install python3-virtualenv 
-check out repo
-go into repo folder
-source ./start-env.sh
-do stuff
-source ./stop-env.sh
+# Development
+## Entering and exiting environments
+### First time setup
+1. apt install python3-pip
+2. apt install python3-virtualenv 
+3. check out repo
+### Working
+1. Go into repo folder
+2. source ./start-env.sh
+3. Do your stuff
+4. source ./stop-env.sh
+## Adding apps
+1. Go to MemberSystem/MemberSystem/settings.py
+2. Add your app name in the 'MAKERSLINK_APPS' list
+## Logging
+To add logging to your app do the following:
+1. Import logging module: `import logging`
+2. Fetch the logger for your app: `logger = logging.getLogger(__name__)`
+3. Log something: `logger.info('test')`
+   
+```
+logger.info('We do')
+logger.warning('not')
+logger.error('log DEBUG')
+logger.critical('to database')
+logger.exception(e)
+```
 
 ## General requirements:
 - Should include a move to PostgreSQL away from SQLite
