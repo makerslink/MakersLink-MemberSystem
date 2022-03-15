@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_section %}
+<script src="{% static '/js/sidebar.js' %}"></script>
+{% endblock %}
+{% block head_style %}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+  height: inherit;
+}
+{% endblock %}
+
+{% block body_before_main %}
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+    <i class="fa fa-remove"></i>
+  </a>
+  <h4 class="w3-bar-item"><b>{% block submenu_title %}{% endblock %}</b></h4>
+  {% block submenu %}{% endblock %}
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+{% endblock %}
+{% block body_main_section %}
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+<div class="w3-main" style="margin-left:250px">
+{% endblock %}
+
+{% block content %}test{% endblock %}

@@ -1,5 +1,5 @@
-from django.contrib import admin
 from __future__ import unicode_literals
+from django.contrib import admin
 import logging
 from django.utils.html import format_html
 
