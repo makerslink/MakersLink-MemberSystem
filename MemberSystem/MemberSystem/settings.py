@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# Django or third party apps
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+# Our own apps
+MAKERSLINK_APPS = [
+    'makerslink_logging',
+]
+
+# Mkae our own apps known to Django
+INSTALLED_APPS += MAKERSLINK_APPS
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -131,3 +140,41 @@ STATICFILES_FINDERS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(module)s %(levelname)s %(asctime)s %(message)s'
+        },
+    },
+    'handlers': {
+        'makerslink_db': {
+            'level': 'DEBUG',
+            'class': 'makerslink_logging.handlers.DatabaseLogHandler'
+        },
+    },
+    'loggers': {
+        'django.request': { # logging 500 errors to database
+            'handlers': ['makerslink_db'],
+            'level': 'ERROR',
+            'propagate': False,
+        }
+    }
+}
+
+# Add loggers per app so we known where our log rows come from
+MAKERSLINK_APP_LOGGERS = {}
+    
+for MAKERSLINK_APP in MAKERSLINK_APPS:
+    MAKERSLINK_APP_LOGGERS[MAKERSLINK_APP] = {
+        'handlers': ['makerslink_db'],
+        'level': 'INFO'
+    }
+LOGGING['loggers'].update(MAKERSLINK_APP_LOGGERS)
