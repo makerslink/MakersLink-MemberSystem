@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 # Our own apps
 MAKERSLINK_APPS = [
     'makerslink_logging',
+    'Members',
 ]
 
 # Mkae our own apps known to Django
@@ -79,6 +80,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MemberSystem.wsgi.application'
 
+# User config
+AUTH_USER_MODEL = 'Members.Member'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
