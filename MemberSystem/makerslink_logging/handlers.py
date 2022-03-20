@@ -8,27 +8,30 @@ db_default_formatter = logging.Formatter()
 
 class DatabaseLogHandler(logging.Handler):
     def emit(self, record):
-        from .models import StatusLog
-        
-        trace = None
+        try:
+            from .models import StatusLog
+            
+            trace = None
 
-        if record.exc_info:
-            trace = db_default_formatter.formatException(record.exc_info)
+            if record.exc_info:
+                trace = db_default_formatter.formatException(record.exc_info)
 
-        if DJANGO_DB_LOGGER_ENABLE_FORMATTER:
-            msg = self.format(record)
-        else:
-            msg = record.getMessage()
+            if DJANGO_DB_LOGGER_ENABLE_FORMATTER:
+                msg = self.format(record)
+            else:
+                msg = record.getMessage()
 
-        kwargs = {
-            'logger_name': record.name,
-            'level': record.levelno,
-            'msg': msg,
-            'trace': trace,
-            'app_name': record.name
-        }
+            kwargs = {
+                'logger_name': record.name,
+                'level': record.levelno,
+                'msg': msg,
+                'trace': trace,
+                'app_name': record.name
+            }
 
-        StatusLog.objects.create(**kwargs)
+            StatusLog.objects.create(**kwargs)
+        except:
+            pass
 
     def format(self, record):
         if self.formatter:
