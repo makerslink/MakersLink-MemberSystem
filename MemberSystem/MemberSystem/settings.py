@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_registration',
 ]
 
 # Our own apps
@@ -82,6 +83,11 @@ WSGI_APPLICATION = 'MemberSystem.wsgi.application'
 
 # User config
 AUTH_USER_MODEL = 'Members.Member'
+LOGOUT_REDIRECT_URL = 'Members:login'
+LOGIN_URL = 'Members:login'
+
+# Django Registration settings
+ACCOUNT_ACTIVATION_DAYS = 7
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
