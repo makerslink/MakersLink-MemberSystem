@@ -85,6 +85,11 @@ WSGI_APPLICATION = 'MemberSystem.wsgi.application'
 AUTH_USER_MODEL = 'Members.Member'
 LOGOUT_REDIRECT_URL = 'Members:login'
 LOGIN_URL = 'Members:login'
+LOGIN_REDIRECT_URL = 'Members:profile'
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'noreply@makerslink.se'
 
 # Django Registration settings
 ACCOUNT_ACTIVATION_DAYS = 7
