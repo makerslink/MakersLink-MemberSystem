@@ -11,7 +11,6 @@ urlpatterns = [
     path('password/reset/', auth_views.PasswordResetView.as_view(template_name="registration/reset_password.html", success_url=reverse_lazy('Members:password_reset_done'), email_template_name='registration/email/password_reset_email.html'), name='password_reset'),
     path('password/reset/sent', auth_views.PasswordResetDoneView.as_view(template_name="registration/reset_password_sent.html"), name='password_reset_done'),
     path('password/reset/<uidb64>/<token>/confirm', auth_views.PasswordResetConfirmView.as_view(template_name="registration/reset_password_confirm.html", success_url=reverse_lazy('Members:password_change_done')), name='password_reset_confirm'),
-    path('profile')
 ]
 
 # Views from django.auth
