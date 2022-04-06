@@ -87,6 +87,9 @@ LOGOUT_REDIRECT_URL = 'Members:login'
 LOGIN_URL = 'Members:login'
 LOGIN_REDIRECT_URL = 'Members:profile'
 
+# Registration settings
+ACCOUNT_ACTIVATION_DAYS = 7
+
 # Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'noreply@makerslink.se'

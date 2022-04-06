@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import render
+from django_registration.backends.activation.views import RegistrationView
+from Members.forms import MemberRegistrationForm
 
 def index(request):
     return render(request, 'base_menu.html')
@@ -26,14 +28,11 @@ def test(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('members/', include('Members.urls')),
+    path('members/', include('Members.registration_urls')),
+    #path('members/register/', RegistrationView.as_view(form_class=MemberRegistrationForm), name='django_registration_register'),
+    #path('members/', include('django_registration.backends.activation.urls')),
     #path('accounts/', include('django_registration.backends.activation.urls')),
     #path('accounts/', include('django.contrib.auth.urls')),
     path('', index, name='index'),
     path('test', test, name='test'),
 ]
-#accounts/password_change/ [name='password_change']
-#accounts/password_change/done/ [name='password_change_done']
-#accounts/password_reset/ [name='password_reset']
-#accounts/password_reset/done/ [name='password_reset_done']
-#accounts/reset/<uidb64>/<token>/ [name='password_reset_confirm']
-#accounts/reset/done/ [name='password_reset_complete']

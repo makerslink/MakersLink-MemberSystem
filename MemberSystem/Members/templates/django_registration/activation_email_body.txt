@@ -1,0 +1,14 @@
+{% autoescape off %}
+Hello,
+
+An account was created at Makerslink with this e-mailaddress. If you did not perform this action you can simply ignore this email.
+
+To active your account click the link below or copy and paste it into your browser.
+{{ scheme }}://{{ site }}{% url 'django_registration_activate' activation_key=activation_key %}
+
+This link can only be used within {{ expiration_days }} days.
+
+Sincerely,
+The Website Team
+
+{% endautoescape %}

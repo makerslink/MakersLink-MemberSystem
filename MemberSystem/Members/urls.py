@@ -3,7 +3,6 @@ from django.contrib.auth import views as auth_views
 
 app_name = 'Members'
 urlpatterns = [
-    #path('/', include('django_registration.backends.activation.urls')),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page=reverse_lazy('Members:login')), name='logout'),
     path('password/change/', auth_views.PasswordChangeView.as_view(template_name="registration/change_password.html", success_url=reverse_lazy('Members:password_change_done')), name='password_change'),
